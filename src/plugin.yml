@@ -1,0 +1,29 @@
+name: PlayerReport
+main: me.ES359.PlayerReport.PlayerReport
+version: 0.1
+description: L0L
+authors: [ES359]
+website: scroob
+
+commands:
+  report:
+    description: Report bitches on servers.
+  checkreport:
+    description: Check player reports.
+    aliases: [check]
+
+  deletereport:
+    description: Delete player reports.
+    aliases: [delete, del]
+
+  reportban:
+    description: Bans a player from submitting reports.
+    aliases: [rb]
+
+  banlookup:
+    description: Looks up a banned player.
+    aliases: [lookup]
+
+  removeban:
+    description: Pardons a banned player.
+    aliases: [rban,pardonuser]

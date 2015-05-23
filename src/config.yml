@@ -1,0 +1,12 @@
+Database:
+  Enabled: false
+  host: 1.0.10
+  username: user
+  password: pass
+  database: db
+Broadcast:
+  public: true
+Report:
+  prefix: "&4&lReport&6&l &8&l--&b&l> "
+  format: "%prefix% &6&o%sendername% &chas reported, &e&l%username% &cfor:%reportmsg%"
+Time-Delay: 60
