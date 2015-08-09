@@ -1,6 +1,7 @@
 package ReportAPI.ReportAPI.Commands;
 
 import ReportAPI.API;
+import Utilities.Permissions;
 import me.ES359.PlayerReport.PlayerReport;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -23,9 +24,12 @@ public class RemoveBanCommand extends API implements CommandExecutor
 
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String args[])
     {
-        if(cmd.getName().equalsIgnoreCase("removeban") && !(sender.hasPermission("pr.removeban")))
+
+        Player p = (Player)sender;
+
+        if(cmd.getName().equalsIgnoreCase("removeban") && !(sender.hasPermission(Permissions.PERM_REMOVEBAN)))
         {
-            sender.sendMessage(permission("&cYou require the permission, &bpr.removeban"));
+            sender.sendMessage(permission("&cYou require the permission, &b"+Permissions.PERM_REMOVEBAN));
         }else if(args.length < 1)
         {
             sender.sendMessage(color(getPrefix() + "&a/removeban <&cplayername&a>"));

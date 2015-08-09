@@ -3,6 +3,7 @@ package ReportAPI;
 
 import Utilities.PRUtils;
 import Utilities.SQL;
+import me.ES359.PlayerReport.PlayerReport;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -34,6 +35,12 @@ public class API extends PRUtils
         return this.banned;
     }
 
+    String getBanId()
+    {
+        return this.banID;
+    }
+
+
     /**
      * Creates a PlayerReport.
      *
@@ -48,7 +55,16 @@ public class API extends PRUtils
     {
         try
         {
+
+            /**
+             * PrepareStatement 1.
+             *
+             * executeQuery  2
+             */
             PreparedStatement statement = sql.getConnection().prepareStatement("INSERT INTO player_reports (name,UUID,report,reported_by,senderUUID) VALUES (?,?,?,?,?); ");
+
+
+
 
             statement.setString(1,p.getName());
             statement.setString(2,""+p.getUniqueId());
@@ -151,7 +167,7 @@ public class API extends PRUtils
      *
      * @param sql
      * @param banned Query's the database to check for banned player.
-     * @param ban_id If secessful, it will remove the ban via ban ID. (THIS VALUE might be removed later on.)
+     * @param  If secessful, it will remove the ban via ban ID. (THIS VALUE might be removed later on.)
      */
     public void removeBan(SQL sql, Player banned, CommandSender sender)
     {
@@ -197,11 +213,32 @@ public class API extends PRUtils
         }
     }
 
+    /**
+    public void archiveReport(SQL sql, CommandSender sender, String ban_ID)
+    {
+        try
+        {
+            PreparedStatement statement;
+
+        }catch (SQLException e)
+        {
+           if(PlayerReport.DEBUG)
+           {
+               e.printStackTrace();
+           }else
+           {
+               syntaxError(e);
+           }
+        }
+    }
+*/
 
 
     //String message = color(getPrefix() + "&6The Player, &a&o" + banned_player.getName()+ " &chas been banned.")
     String userName;
     String userUUID;
+    String banID;
     boolean banned;
+
 
 }

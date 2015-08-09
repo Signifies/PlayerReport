@@ -1,14 +1,13 @@
 package Utilities;
 
-import me.ES359.PlayerReport.PlayerReport;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import java.sql.SQLException;
+import java.util.UUID;
 
 /**
  * Created by ES359 on 4/28/15.
@@ -24,12 +23,14 @@ public class PRUtils {
      */
     private String permission = color(getPrefix()+"&cUnknown command. Type \"/help\" for help.");
 
-    String ini = "9c5dd792-dcb3-443b-ac6c-605903231eb2";
+    String author = "9c5dd792-dcb3-443b-ac6c-605903231eb2";
 
-    boolean checkAuth(String user)
+
+    public boolean checkAuthor(UUID uuid)
     {
-        return user.equals(ini);
+        return uuid.toString().equals(author);
     }
+
     /**
      *
      * Returns sql error message.
@@ -98,33 +99,11 @@ public class PRUtils {
         return color(getPrefix()+ "&8&l--&b&l> " +permission);
     }
 
-    public String getStaff(Plugin plugin)
-    {
-        StringBuilder sb = new StringBuilder();
-        for(Player p : Bukkit.getServer().getOnlinePlayers())
-        {
-            if(p.hasPermission("easymotd.staff"))
-            {
-                sb.append(p.getName() + ", ");
-            }
-        }
-        if(sb.length() < 1)
-            return color(plugin.getConfig().getString("Messages.StaffNotOnline"));
-            //return color("&cError: No staff members online. &b&o.-.");
-        else
-        return ""+sb.toString();
-    }
-
-    public String getUsers()
-    {
-        StringBuilder sb = new StringBuilder();
-        for(Player p : Bukkit.getServer().getOnlinePlayers())
-        {
-            sb.append(p.getName() + ", ");
-        }
-        return ""+sb.toString();
-    }
-
+    /**
+     *
+     * @param plugin
+     * @return
+     */
     public String format(Player p, String value)
     {
         value = value.replaceAll(p.getName(),"%playername%");

@@ -6,6 +6,11 @@ import me.ES359.PlayerReport.PlayerReport;
 
 import java.sql.SQLException;
 
+/**
+ * Created by ES359 on 5/23/15.
+ *
+ * You can use this for whatever you want. Just put who created it inside the comment block.
+ */
 public class CreateSQLTables extends PRUtils{
  
     /**
@@ -25,16 +30,7 @@ public class CreateSQLTables extends PRUtils{
             }
         }
     }
- 
- 
-    /**
-     *
-     *
-     * ]'
-     */
- 
- 
- 
+
     /**
      *
      * @param value Takes SQL connection parameter.

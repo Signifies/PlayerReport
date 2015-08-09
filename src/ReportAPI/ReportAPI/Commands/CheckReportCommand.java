@@ -1,6 +1,7 @@
 package ReportAPI.ReportAPI.Commands;
 
 import ReportAPI.API;
+import Utilities.Permissions;
 import me.ES359.PlayerReport.PlayerReport;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -33,9 +34,9 @@ public class CheckReportCommand extends API implements CommandExecutor
 
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String args[])
     {
-        if(cmd.getName().equalsIgnoreCase("checkreport") && !(sender.hasPermission("pr.checkreport")))
+        if(cmd.getName().equalsIgnoreCase("checkreport") && !(sender.hasPermission(Permissions.reportCheck_PERM)))
         {
-            sender.sendMessage(permission("&cYou require the permission &bpr.checkreport"));
+            sender.sendMessage(permission("&cYou require the permission &b" +Permissions.reportCheck_PERM));
         }else
         {
             if(args.length < 1)

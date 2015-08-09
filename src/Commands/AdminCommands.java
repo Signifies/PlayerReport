@@ -1,6 +1,7 @@
 package Commands;
 
 import Utilities.PRUtils;
+import Utilities.Permissions;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -10,13 +11,12 @@ import org.bukkit.command.CommandSender;
  */
 public class AdminCommands implements CommandExecutor
 {
-
     PRUtils util = new PRUtils();
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String args[])
     {
-        if(cmd.getName().equalsIgnoreCase("pr") && !(sender.hasPermission("playerreports.admin")))
+        if(cmd.getName().equalsIgnoreCase("pr") && !(sender.hasPermission(Permissions.PERMISSION_ADMIN)))
         {
-            sender.sendMessage(util.permission("&cYou require the permission, &bplayerreports.admin"));
+            sender.sendMessage(util.permission("&cYou require the permission, &e" + Permissions.PERMISSION_ADMIN));
         }else
         {
 

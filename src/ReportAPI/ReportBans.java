@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+@Deprecated
 public class ReportBans {
  
     private SQL sql;
@@ -57,6 +58,8 @@ public class ReportBans {
  
     public void getReason(SQL sql, Player p) {
         String uuid = ""+p.getUniqueId();
+
+
  
         try{
             Statement s = sql.getConnection().createStatement();

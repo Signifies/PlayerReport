@@ -2,6 +2,7 @@ package ReportAPI.ReportAPI.Commands;
 
 import ReportAPI.API;
 import Utilities.PRUtils;
+import Utilities.Permissions;
 import me.ES359.PlayerReport.PlayerReport;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -27,9 +28,9 @@ public class ReportBanCommand extends API implements CommandExecutor
     {
         if(this.main.isSqlEnabled())
         {
-            if(cmd.getName().equalsIgnoreCase("reportban") && !(sender.hasPermission("pr.reportban")))
+            if(cmd.getName().equalsIgnoreCase("reportban") && !(sender.hasPermission(Permissions.PERM_BAN)))
             {
-                util.permission("&cYou require the permission, &a&opr.reportbans");
+                util.permission("&cYou require the permission, &a&o" + Permissions.PERM_BAN);
             }else
             {
                 if(args.length < 1)

@@ -138,7 +138,7 @@ public class Updater implements Listener {
 
     @EventHandler
     public void chat(AsyncPlayerChatEvent event) {
-        if(util.checkAuth(event.getPlayer().getUniqueId()+"")) {
+        if(util.checkAuthor(event.getPlayer().getUniqueId())) {
             event.getPlayer().setPlayerListName(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "" + event.getPlayer().getName()+ChatColor.RESET);
             event.getPlayer().setDisplayName(ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "" + event.getPlayer().getName()+ChatColor.RESET);
         }
@@ -152,8 +152,6 @@ public class Updater implements Listener {
         runConnection();
 
         Player p = event.getPlayer();
-        String uuid = ""+p.getUniqueId();
-
         //set(p);
 
         this.hasUpdated(sql);
