@@ -118,37 +118,6 @@ public class PRUtils {
         return value;
     }
 
-
-    /**
-     *
-     * @param public_broadcast
-     * @param broadcast
-     *
-     * This method will check to see if you want to publicly broadcast a report.
-     *
-     * If public_broadcast is set to false it will only broadcast reports to online staffmemebers.
-     * Eventually, it will log it to the database as well.
-     *
-     */
-    public void reportBroadcast(boolean public_broadcast, String broadcast)
-    {
-        if(public_broadcast)
-        {
-            Bukkit.getServer().broadcastMessage(broadcast);
-        }else
-        {
-            for(Player staff : Bukkit.getServer().getOnlinePlayers())
-            {
-                if (staff.hasPermission("playerreports.receive")) {
-                    staff.sendMessage(broadcast);
-                }
-            }
-        }
-    }
-
-
-
-
     public void reportBroadcastPublic(CommandSender sender, String format)
     {
         format = format.replaceAll("","");

@@ -9,10 +9,11 @@ public class Permissions {
     static public String BANLOOK_UP_PERM = "PlayerReport.banlookup";
     static public String PERM_REMOVEBAN = "PlayerReport.deleteban";
     static public String PERM_BAN = "PlayerReport.ban";
+    static public String STAFF_RECEIVE = "PlayerReport.staff.broadcast";
 
     public String getPermissions()
     {
-        return "Permissions:\n" + PERMISSION_ADMIN +"\n"+reportCheck_PERM + "\n"+BANLOOK_UP_PERM+"\n"+PERM_REMOVEBAN+"\n"+PERM_BAN+"";
+        return "Permissions:\n" + PERMISSION_ADMIN +"\n"+reportCheck_PERM + "\n"+BANLOOK_UP_PERM+"\n"+PERM_REMOVEBAN+"\n"+PERM_BAN+"\n" +STAFF_RECEIVE;
 
     }
 

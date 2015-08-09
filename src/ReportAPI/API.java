@@ -2,8 +2,10 @@ package ReportAPI;
 
 
 import Utilities.PRUtils;
+import Utilities.Permissions;
 import Utilities.SQL;
 import me.ES359.PlayerReport.PlayerReport;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -42,6 +44,53 @@ public class API extends PRUtils
 
 
     /**
+     *
+     * @param public_broadcast
+     * @param broadcast
+     *
+     * This method will check to see if you want to publicly broadcast a report.
+     *
+     * If public_broadcast is set to false it will only broadcast reports to online staffmemebers.
+     * Eventually, it will log it to the database as well.
+     *
+     * createReport(this.main.getSQL(),report,user,p);
+     *
+     */
+    public void reportBroadcast(SQL sql, boolean public_broadcast, String broadcast,String report, Player player, Player sender)
+    {
+       if(public_broadcast)
+       {
+           createReport(sql,report,player,sender);
+           sender.sendMessage(color("&7Your report has been &6&ofiled&7 &a&o" + sender.getName()));
+       }else
+       {
+           for(Player staff : Bukkit.getServer().getOnlinePlayers())
+           {
+               if(staff.hasPermission(Permissions.STAFF_RECEIVE))
+               {
+                   staff.sendMessage(broadcast);
+               }
+           }
+       }
+    }
+
+
+    /*
+    if(public_broadcast)
+    {
+        Bukkit.getServer().broadcastMessage(broadcast);
+    }else
+    {
+        for(Player staff : Bukkit.getServer().getOnlinePlayers())
+        {
+            if (staff.hasPermission("playerreports.receive")) {
+                staff.sendMessage(broadcast);
+            }
+        }
+    }
+    */
+
+    /**
      * Creates a PlayerReport.
      *
      * This method will contain the logic for the database
@@ -62,9 +111,6 @@ public class API extends PRUtils
              * executeQuery  2
              */
             PreparedStatement statement = sql.getConnection().prepareStatement("INSERT INTO player_reports (name,UUID,report,reported_by,senderUUID) VALUES (?,?,?,?,?); ");
-
-
-
 
             statement.setString(1,p.getName());
             statement.setString(2,""+p.getUniqueId());

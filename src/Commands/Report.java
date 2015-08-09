@@ -99,7 +99,7 @@ public class Report extends API implements CommandExecutor {
                 if (!sender.hasPermission("pr.bypass.cooldown")) {
 
                     cooldowns.put(sender.getName(), System.currentTimeMillis());
-                    util.reportBroadcast(main.getConfig().getBoolean("Broadcast.public"), util.color(config));
+                    reportBroadcast(main.getSQL(),main.getConfig().getBoolean("Broadcast.public"), util.color(config));
                     //sender.sendMessage(ChatColor.GREEN + "Your report has been submitted, " + ChatColor.GOLD + "" + sender.getName());
 
                 } else {
